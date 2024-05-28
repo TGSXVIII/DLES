@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+#content {
+    display: flex;
+    flex: 1;
+}
+
+aside {
+    background-color: #f4f4f4;
+    padding: 10px;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+#left-sidebar {
+    border-right: 1px solid #000000;
+}
+
+#right-sidebar {
+    border-left: 1px solid #000000;
+}
+
+#game-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(5, 70px);
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-left: 15%;
+}
+
+.tile {
+    width: 70px;
+    height: 70px;
+    border: 2px solid #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: white;
+}
+
+.correct {
+    background-color: #4caf50;
+    color: black;
+}
+
+.present {
+    background-color: #ecec14;
+    color: black;
+}
+
+.absent {
+    background-color: gray;
+    color: black;
+}
+
+#keyboard {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+}
+
+.key {
+    padding: 20px;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    text-transform: uppercase;
+    user-select: none;
+    color: black;
+}
+
+.key:active {
+    background-color: #ddd;
+}
+
+.key.delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.key.enter {
+    background-color: #4caf50;
+    color: white;
+}
+
+/* New style for absent keys */
+.key.absent {
+    background-color: gray;
+    color: white;
+}
+
+.key.present {
+    background-color: #ecec14;
+}
+
+.key.correct {
+    background-color: #4caf50;
+    color: white;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
