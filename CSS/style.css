@@ -21,6 +21,10 @@ nav {
     text-align: center;
 }
 
+h1 {
+    margin-right: 4%;
+}
+
 #content {
     display: flex;
     flex: 1;
@@ -107,12 +111,12 @@ aside {
 }
 
 .key.delete {
-    background-color: #f44336;
+    background-color: #ddd;
     color: white;
 }
 
 .key.enter {
-    background-color: #4caf50;
+    background-color: #ddd;
     color: white;
 }
 
@@ -136,4 +140,40 @@ footer {
     color: white;
     padding: 10px;
     text-align: center;
+}
+
+@media only screen and (max-width: 1020px) {
+    aside {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 620px) {
+    #keyboard {
+        display: none;
+    }
+
+    #board {
+        margin-left: 0%;
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    #keyboard {
+        display: none;
+    }
+
+    #board {
+        margin-right: 0%;
+    }
+}
+
+@media only screen and (max-width: 510px) {
+    #keyboard {
+        display: none;
+    }
+
+    #board {
+        margin-left: 0%;
+    }
 }
