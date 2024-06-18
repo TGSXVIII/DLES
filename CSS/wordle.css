@@ -1,0 +1,106 @@
+#game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(5, 70px);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tile {
+    width: 70px;
+    height: 70px;
+    border: 2px solid #6e6e6e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background-color: white;
+}
+
+.correct {
+    background-color: #4caf50;
+    color: black;
+}
+
+.present {
+    background-color: #ecec14;
+    color: black;
+}
+
+.absent {
+    background-color: gray;
+    color: black;
+}
+
+#keyboard {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 5px;
+    width: fit-content; /* Adjust width to fit content */
+    margin-top: 20px;
+    justify-content: center; /* Center align the keyboard */
+}
+
+.key {
+    width: 50px; /* Equal width and height for square keys */
+    height: 50px;
+    border: 1px solid #6e6e6e;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    user-select: none;
+    color: black;
+    font-size: 16px; /* Adjust font size for better fit */
+}
+
+.key:active {
+    background-color: #ddd;
+}
+
+.key.delete, .key.enter {
+    width: 110px; /* Wider for special keys to span multiple columns */
+    height: 50px; /* Same height as regular keys */
+    background-color: #ddd;
+    color: white;
+    grid-column: span 2; /* Span two columns */
+}
+
+/* Styling for absent keys */
+.key.absent {
+    background-color: gray;
+    color: white;
+}
+
+.key.present {
+    background-color: #ecec14;
+}
+
+.key.correct {
+    background-color: #4caf50;
+    color: white;
+}
+
+/* Adjusting spacers to align the rows */
+.spacer {
+    width: 50px; /* Same width as keys */
+    height: 50px; /* Same height as keys */
+    background-color: transparent; /* Transparent background */
+    pointer-events: none; /* Spacers shouldn't be interactive */
+}
+
+#key-enter,
+#key-delete,
+.key {
+    background-color: rgb(255, 255, 255);
+    color: black;
+}

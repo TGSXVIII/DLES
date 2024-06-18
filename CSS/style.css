@@ -18,31 +18,15 @@ nav {
     background-color: #333;
     color: white;
     padding: 10px;
-    text-align: center;
-}
-
-h1 {
-    margin-right: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center content horizontally */
+    position: relative; /* Ensure ul stays in place */
 }
 
 #content {
     display: flex;
     flex: 1;
-}
-
-aside {
-    background-color: #f4f4f4;
-    padding: 10px;
-    width: 200px;
-    flex-shrink: 0;
-}
-
-#left-sidebar {
-    border-right: 1px solid #000000;
-}
-
-#right-sidebar {
-    border-left: 1px solid #000000;
 }
 
 #game-container {
@@ -51,88 +35,67 @@ aside {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    background-color: #91cce6; /* Light teal or light grey background */
+    padding: 20px; /* Optional: padding around the game container */
 }
 
-#board {
-    display: grid;
-    grid-template-columns: repeat(5, 70px);
-    gap: 10px;
-    margin-bottom: 20px;
-    margin-left: 15%;
+aside {
+    background-color: #004d66; /* Navy or teal background */
+    padding: 10px;
+    width: 200px;
+    flex-shrink: 0;
 }
 
-.tile {
-    width: 70px;
-    height: 70px;
-    border: 2px solid #ddd;
+#left-sidebar,  
+#right-sidebar {
+    border-right: 1px solid #000000;
+    border-left: 1px solid #000000;
+}
+
+nav h1 {
+    flex: 1; /* Allow h1 to take available space */
+    text-align: center; /* Center text within h1 */
+}
+
+nav ul {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
-    text-transform: uppercase;
-    background-color: white;
+    position: absolute;
+    right: 10px; /* Align ul to the right */
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
 }
 
-.correct {
-    background-color: #4caf50;
-    color: black;
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 0 10px;
 }
 
-.present {
-    background-color: #ecec14;
-    color: black;
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 10px;
+    position: relative;
 }
 
-.absent {
-    background-color: gray;
-    color: black;
+nav ul li a::after {
+    content: "";
+    width: 0;
+    height: 3px;
+    background: #40E0D0;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
 }
 
-#keyboard {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    gap: 5px;
+nav ul li a:hover::after {
+    width: 100%;
 }
 
-.key {
-    padding: 20px;
-    background-color: #eee;
-    border: 1px solid #ccc;
-    cursor: pointer;
-    text-transform: uppercase;
-    user-select: none;
-    color: black;
-}
-
-.key:active {
-    background-color: #ddd;
-}
-
-.key.delete {
-    background-color: #ddd;
-    color: white;
-}
-
-.key.enter {
-    background-color: #ddd;
-    color: white;
-}
-
-/* New style for absent keys */
-.key.absent {
-    background-color: gray;
-    color: white;
-}
-
-.key.present {
-    background-color: #ecec14;
-}
-
-.key.correct {
-    background-color: #4caf50;
-    color: white;
+nav .fas {
+    display: none;
 }
 
 footer {
@@ -140,6 +103,7 @@ footer {
     color: white;
     padding: 10px;
     text-align: center;
+    margin-top: auto; /* Ensure footer is pushed to bottom */
 }
 
 @media only screen and (max-width: 1020px) {
@@ -149,12 +113,99 @@ footer {
 }
 
 @media only screen and (max-width: 620px) {
+    /* Centering text */
+    .header-text,
+    #about,
+    #hobbies,
+    #portfolio,
+    #contact,
+    .row,
+    .container,
+    .sub-title,
+    .tab-links {
+        text-align: center;
+    }
+    
     #keyboard {
         display: none;
     }
 
+    nav .fas {
+        display: block;
+        font-size: 25px;
+    }
+
+    nav ul {
+        background: #262626;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 25px;
+    }
+
+    nav ul .fas {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+
+    /* Additional centering styles */
+    .row,
+    .header-text,
+    #sidemenu,
+    .btn {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    #sidemenu {
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100%;
+        transition: right 0.5s;
+    }
+
+    
+    .fas.fa-bars {
+        display: block;
+        cursor: pointer;
+        font-size: 25px;
+        justify-content: right;
+    }
+
     #board {
         margin-left: 0%;
+    }
+
+    /* Show the sidemenu when the menu icon is clicked */
+    .menu-open #sidemenu {
+        display: flex;
+        /* Re-display the sidemenu */
+    }
+
+    /* Adjust sidemenu items */
+    #sidemenu li a {
+        font-size: large;
+        /* Adjust font size */
+        padding: 10px;
+        /* Add padding */
+        display: block;
+        /* Display as block to fill the width of the menu */
     }
 }
 

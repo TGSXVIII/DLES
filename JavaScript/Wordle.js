@@ -2,8 +2,9 @@ let words = [];
 let word = "";
 let currentGuess = "";
 let currentRow = 0;
+let previousGuesses = [];
 
-// ---------------------------------------------------- //
+// ------------------------ Event listeners ------------------------- //
 
 document.addEventListener("DOMContentLoaded", async () => {
     await loadWords();  // Load words from the file into the `words` array
@@ -16,52 +17,47 @@ document.addEventListener("keydown", (e) => {
     const key = e.key.toLowerCase();
     if (key === "enter" && currentGuess.length === 5) {
         checkGuess();
-    }
-
-    else if (key === "backspace") {
+    } else if (key === "backspace") {
         currentGuess = currentGuess.slice(0, -1);
         updateBoard();
-    }
-
-    else if (/^[a-z]$/.test(key)) {
+    } else if (/^[a-z]$/.test(key)) {
         handleKeyPress(key);
     }
 });
 
-// ---------------------------------------------------- //
-
+// Function for loading all the words in the words list
 async function loadWords() {
     try {
-        const response = await fetch("Lists/Wordle (English)/answerlist.txt");  // Fetch the word list file
-        const text = await response.text();  // Read the file content as text
-        words = text.split("\n").map(word => word.trim()).filter(word => word.length > 0);  // Split and clean the words
-    }
-
-    catch (error) {
-        console.error("Failed to load words:", error);  // Log any errors if the fetch fails
-    }
-}
-
-async function isInWordList(guess) {
-    try {
-        const response = await fetch("Lists/Wordle (English)/answerlist.txt"); // Fetch the word list file
-        const text = await response.text(); // Read the file content as text
-        const wordsList = text.split("\n").map(word => word.trim()).filter(word => word.length > 0); // Split and clean the words
-        return wordsList.includes(guess.toLowerCase()); // Check if the guess is in the list
+        const response = await fetch("Lists/Wordle (English)/wordlist.txt");  
+        const text = await response.text();
+        words = text.split("\n").map(word => word.trim()).filter(word => word.length > 0);
     } catch (error) {
-        console.error("Failed to check if guess is in word list:", error);
-        return false; // Return false if there's an error
+        console.error("Failed to load words:", error);  
     }
 }
 
+// function for checking if the guess is correct, partly correct or not at all correct
 async function checkGuess() {
+    const letterCounts = {};
     const guess = currentGuess.toLowerCase();
     const usedKeys = new Set();
 
-    if (!(await isInWordList(guess))) {
+    if (!words.includes(guess)) {
         alert("That isn't a word in the word list. Try again.");
         clearRow();
         return;
+    }
+
+    if (previousGuesses.includes(guess)) {
+        alert("You can't write the same answer again. Try again.");
+        clearRow();
+        return;
+    }
+
+    previousGuesses.push(guess);
+
+    for (let letter of word) {
+        letterCounts[letter] = (letterCounts[letter] || 0) + 1;
     }
 
     for (let i = 0; i < 5; i++) {
@@ -72,18 +68,25 @@ async function checkGuess() {
             tile.classList.add("correct");
             keyElement.classList.remove("present", "absent");
             keyElement.classList.add("correct");
+            letterCounts[guess[i]] -= 1;
         }
 
-        else if (word.includes(guess[i])) {
+        if (tile.classList.contains("correct")) continue;
+
+        if (word.includes(guess[i]) && letterCounts[guess[i]] > 0) {
             tile.classList.add("present");
+
+            if (keyElement.classList.contains("correct")) {
+                keyElement.classList.remove("present");
+            }
 
             if (!keyElement.classList.contains("correct")) {
                 keyElement.classList.remove("absent");
                 keyElement.classList.add("present");
             }
-        }
 
-        else {
+            letterCounts[guess[i]] -= 1;
+        } else {
             tile.classList.add("absent");
 
             if (!usedKeys.has(guess[i])) {
@@ -93,21 +96,9 @@ async function checkGuess() {
         usedKeys.add(guess[i]);
     }
 
-    // Add an if statement that checks if the users previous is writen again and then say you cant write the same answer again
-    if (guess){
-
-    }
-
-    // Add an if statement that checks if the letter has been sat in correct position and then not show it in another position
-    // to make sure that if there is fx only one E that it dosent show there are 2
-    if (guess) {
-
-    }
-
     if (guess === word) {
         alert("Congratulations! You've guessed the word!");
-        clearBoard();
-        clearKeyboard(); // Call clearKeyboard when the game is over
+        clearAll();
         location.reload();
     } else {
         currentRow++;
@@ -115,15 +106,13 @@ async function checkGuess() {
 
         if (currentRow === 6) {
             alert(`Game Over! The word was ${word}`);
-            clearBoard();
-            clearKeyboard(); // Call clearKeyboard when the game is over
+            clearAll();
             location.reload();
         }
     }
 }
 
-// ---------------------------------------------------- //
-
+// Function used to create the board with the grid
 function createBoard() {
     const board = document.getElementById("board");
 
@@ -139,17 +128,71 @@ function createBoard() {
 
 function createKeyboard() {
     const keyboard = document.getElementById("keyboard");
-    const keys = "abcdefghijklmnopqrstuvwxyz".split("");
-    keys.forEach(key => {
-        const keyElement = document.createElement("div");
-        keyElement.classList.add("key");
-        keyElement.id = `key-${key}`; // Set the ID for the key element
-        keyElement.textContent = key;
-        keyElement.addEventListener("click", () => handleKeyPress(key));
-        keyboard.appendChild(keyElement);
+    const rows = [
+        "qwertyuiop",
+        "asdfghjkl",
+        "zxcvbnm"
+    ];
+
+    rows.forEach((row, rowIndex) => {
+        if (rowIndex === 1) {
+            // Add spacer for the second row
+            const spacer = document.createElement("div");
+            spacer.classList.add("spacer");
+            keyboard.appendChild(spacer);
+        }
+        
+        row.split("").forEach(key => {
+            const keyElement = document.createElement("div");
+            keyElement.classList.add("key");
+            keyElement.id = `key-${key}`;
+            keyElement.textContent = key;
+            keyElement.addEventListener("click", () => handleKeyPress(key));
+            keyboard.appendChild(keyElement);
+        });
+
+        if (rowIndex === 1) {
+            // Add spacer for the second row alignment
+            const spacer = document.createElement("div");
+            spacer.classList.add("spacer");
+            keyboard.appendChild(spacer);
+        }
+
+        if (rowIndex === 2) {
+            // Add extra spacers for alignment on the third row
+            const extraSpacer = document.createElement("div");
+            extraSpacer.classList.add("spacer");
+            keyboard.appendChild(extraSpacer);
+            keyboard.appendChild(extraSpacer);
+
+            // Add Enter key at the end of the third row
+            const enterKey = document.createElement("div");
+            enterKey.classList.add("key", "enter");
+            enterKey.id = "key-enter";
+            enterKey.textContent = "Enter";
+            enterKey.addEventListener("click", () => handleKeyPress("Enter"));
+            keyboard.appendChild(enterKey);
+        }
     });
+
+    // Add Delete key at the end of the keyboard
+    const deleteKey = document.createElement("div");
+    deleteKey.classList.add("key", "delete");
+    deleteKey.id = "key-delete";
+    deleteKey.textContent = "Delete";
+    deleteKey.addEventListener("click", () => handleKeyPress("Delete"));
+    keyboard.appendChild(deleteKey);
 }
 
+// Call the function to create the keyboard on page load or whenever appropriate
+createKeyboard();
+
+
+// Call the function to create the keyboard on page load or whenever appropriate
+createKeyboard();
+
+
+// Function used to start the update board if all things are as they should be
 function handleKeyPress(key) {
     if (currentGuess.length < 5) {
         currentGuess += key;
@@ -157,6 +200,7 @@ function handleKeyPress(key) {
     }
 }
 
+// Function used to update the board
 function updateBoard() {
     for (let i = 0; i < 5; i++) {
         const tile = document.getElementById(`tile-${currentRow}-${i}`);
@@ -164,19 +208,20 @@ function updateBoard() {
     }
 }
 
+// Function used to clear a row when the input is incorrect
 function clearRow() {
     for (let i = 0; i < 5; i++) {
         const tile = document.getElementById(`tile-${currentRow}-${i}`);
         tile.textContent = "";
         tile.classList.remove("correct", "present", "absent");
     }
+
     currentGuess = "";
 }
 
+// Function used for clearing the board once you the game is over
 function clearBoard() {
-    // Iterate through all rows
     for (let i = 0; i < 6; i++) {
-        // Iterate through all columns
         for (let j = 0; j < 5; j++) {
             const box = document.getElementById(`tile-${i}-${j}`);
             box.textContent = "";
@@ -184,16 +229,24 @@ function clearBoard() {
         }
     }
 
-    currentGuess = "";  // Reset the current guess
-    currentRow = 0;  // Reset the current row
+    currentGuess = "";  
+    currentRow = 0;  
 }
 
+// Function for clearing the keyboard once the game is over
 function clearKeyboard() {
     const keys = document.querySelectorAll(".key");
 
     keys.forEach(key => {
         key.classList.remove("correct", "present", "absent");
-        key.style.backgroundColor = "#eee"; // Set back to original background color
-        key.style.color = "black"; // Set back to original text color
+        key.style.backgroundColor = "#eee";
+        key.style.color = "black";
     });
 }
+
+// Function to clear all
+function clearAll() {
+    clearBoard();
+    clearKeyboard();
+}
+ 

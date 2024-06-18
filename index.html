@@ -11,12 +11,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="CSS/style.css">
+    <link rel="stylesheet" href="CSS/wordle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    
+    <script src="/JavaScript/DBConnection.js"></script>
+    <script src="/JavaScript/sidemenu.js"></script>
+    <script src="/JavaScript/Wordle2.js"></script>
 </head>
 
 <body>
-    <nav>
-        <h1>Wordle</h1>
-    </nav>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <h1>Wordle</h1>
+                <ul id="sidemenu">
+                    <li><a href="signup" style="font-size: x-large;">Sign Up</a></li>
+                    <li><a href="login" style="font-size: x-large;">Login</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
+            </nav>
+        </div>
+    </div>
 
     <div id="content">
 
@@ -36,8 +52,6 @@
         </aside>
 
     </div>
-
-    <script src="/JavaScript/Wordle.js"></script>
 
     <footer>
         <p>&copy; 2024 Wordle Game</p>
