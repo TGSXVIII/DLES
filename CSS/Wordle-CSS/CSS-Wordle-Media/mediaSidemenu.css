@@ -1,0 +1,26 @@
+ @media (max-width: 700px) {
+
+    .menu-open #sidemenu {
+        display: flex;
+    }
+
+    #sidemenu {
+        right: -200px;
+        width: 200px;
+        height: 100%;
+        transition: right 0.5s;
+    }
+
+    #sidemenu li a {
+        font-size: large;
+        padding: 10px;
+        display: block;
+    }
+
+    .fas.fa-bars {
+        display: block;
+        cursor: pointer;
+        font-size: 30px; 
+        margin-right: 3%;
+    }
+ }

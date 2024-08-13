@@ -1,0 +1,96 @@
+@media (max-width: 1700px) {
+
+    .container h1{
+        margin-left: 10%;
+    }
+}
+
+@media (max-width: 1550px) {
+
+    .container h1{
+        margin-left: 11%;
+    }
+}
+
+@media (max-width: 1500px) {
+
+    .container h1{
+        margin-left: 11%;
+    }
+}
+
+@media (max-width: 1100px) {
+    
+    .container h1 {
+        margin-left: 15.5%;
+    }
+}
+
+@media (max-width: 800px) {
+    
+    .container h1 {
+        margin-left: 21%;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .container h1{
+        margin-right: 18%;
+    }
+
+    .nav-buttons {
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically */
+        gap: 20px; /* Add some spacing between buttons */
+        margin-top: 0%;
+        margin-bottom: 350%;
+    }
+
+    .nav-button {
+        background-color: #262626;
+        width: 100%; /* Ensure buttons take up full width */
+        font-size: x-large;
+    }
+
+    .nav-button:hover {
+        color: aqua;
+    }
+
+    nav .fas {
+        display: block;
+        font-size: 25px;
+    }
+
+    nav ul {
+        background: #262626;
+        position: fixed;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 25px 0;
+    }
+
+    nav ul .fas {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+}
+
+@media (max-width: 600px) {
+    
+    .container h1{
+        margin-left: 13%;
+    }
+}

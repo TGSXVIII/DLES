@@ -1,0 +1,40 @@
+#topmenu {
+    display: block;
+    width: 100%;
+    position: fixed; 
+    top: -100px; 
+    background-color: #494949; 
+    color: white; 
+    padding: 10px; /* Adjust padding */
+    text-align: center;
+    height: 100px;
+    left: 0; /* Ensure the top menu starts from the left edge */
+}
+
+.nav-button2 {
+    color: white;
+    border: none;
+    font-size: large;
+    cursor: pointer;
+    background-color: #494949;
+    margin-right: 4%;
+    margin-top: 1%;
+}
+
+.nav-button2:hover {
+    color: rgb(65, 164, 194);
+}
+
+#topMenuOpen {
+    display: block; 
+    font-size: 30px; 
+    cursor: pointer;
+}
+
+#topMenuClose {
+    display: block !important; 
+    cursor: pointer; 
+    float: right;
+    margin-top: 1%;
+    margin-right: 0.5%;
+}

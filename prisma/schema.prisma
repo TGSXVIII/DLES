@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  ID Int @id @default(autoincrement())
+  name String
+}
+
+model SignUp {
+  ID       Int    @id @default(autoincrement())
+  email    String @unique
+  userName String @unique
+  password String @unique
+  createdAt DateTime @default(now())
+}
+
+model Login {
+  email    String @unique
+  userName String @unique
+  password String @unique
+}
+
+model wordleEnglish {
+  ID   Int    @id @default(autoincrement())
+  word String @unique(map: "word") @default("") @db.VarChar(5)
+}
+
+model wordleGerman {
+  ID   Int    @id @default(autoincrement())
+  word String @unique(map: "word") @default("") @db.VarChar(5)
+}
+
+model wordleSpanish {
+  ID   Int    @id @default(autoincrement())
+  word String @unique(map: "word") @default("") @db.VarChar(5)
+}
+
+model R6Siege {
+  ID                   Int    @id @default(autoincrement())
+  characterName        String @unique
+  characterPortraitURL String
+}
+
+model LoL {
+  ID                   Int    @id @default(autoincrement())
+  characterName        String @unique
+  characterPortraitURL String
+}
+
+model HellDivers {
+  ID                   Int    @id @default(autoincrement())
+  monsterName          String @unique
+  stratagemName        String @unique
+  characterPortraitURL String
+}
+
+model Halo {
+  ID                   Int    @id @default(autoincrement())
+  characterName        String @unique
+  characterPortraitURL String
+}
+
+model Hades {
+  ID                   Int    @id @default(autoincrement())
+  characterName        String @unique
+  characterPortraitURL String
+}
+
+model Games {
+  ID                   Int    @id @default(autoincrement())
+  gameName             String @unique
+  characterPortraitURL String
+}
+
+model DBD {
+  ID                   Int    @id @default(autoincrement())
+  characterName        String @unique
+  characterPortraitURL String
+}
+
+model Body {
+  ID                   Int    @id @default(autoincrement())
+  bodypartName         String @unique
+  characterPortraitURL String
+}
+
+model BG3 {
+  ID                   Int    @id @default(autoincrement())
+  characterName        String @unique
+  characterPortraitURL String
+}

@@ -4,98 +4,27 @@
     box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
     height: 100%;
+    width: 100%;
 }
 
 body {
     display: flex;
     flex-direction: column;
-}
-
-nav {
-    background-color: #333;
-    color: white;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Center content horizontally */
-    position: relative; /* Ensure ul stays in place */
-}
-
-#content {
-    display: flex;
-    flex: 1;
-}
-
-#game-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #91cce6; /* Light teal or light grey background */
-    padding: 20px; /* Optional: padding around the game container */
 }
 
 aside {
-    background-color: #004d66; /* Navy or teal background */
+    background-color: #f4f4f4;
     padding: 10px;
     width: 200px;
     flex-shrink: 0;
 }
 
-#left-sidebar,  
-#right-sidebar {
-    border-right: 1px solid #000000;
-    border-left: 1px solid #000000;
-}
-
-nav h1 {
-    flex: 1; /* Allow h1 to take available space */
-    text-align: center; /* Center text within h1 */
-}
-
-nav ul {
-    display: flex;
-    position: absolute;
-    right: 10px; /* Align ul to the right */
-    top: 50%;
-    transform: translateY(-50%);
-    margin: 0;
-}
-
-nav ul li {
-    display: inline-block;
-    list-style: none;
-    margin: 0 10px;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 10px;
-    position: relative;
-}
-
-nav ul li a::after {
-    content: "";
-    width: 0;
-    height: 3px;
-    background: #40E0D0;
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    transition: 0.5s;
-}
-
-nav ul li a:hover::after {
-    width: 100%;
-}
-
-nav .fas {
-    display: none;
+#left-sidebar, #right-sidebar {
+    border-left: 2px solid #000000;
+    border-right: 2px solid #000000;
+    background-color: #226c83;
 }
 
 footer {
@@ -103,128 +32,10 @@ footer {
     color: white;
     padding: 10px;
     text-align: center;
-    margin-top: auto; /* Ensure footer is pushed to bottom */
+    margin-top: auto;
 }
 
-@media only screen and (max-width: 1020px) {
-    aside {
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 620px) {
-    /* Centering text */
-    .header-text,
-    #about,
-    #hobbies,
-    #portfolio,
-    #contact,
-    .row,
-    .container,
-    .sub-title,
-    .tab-links {
-        text-align: center;
-    }
-    
-    #keyboard {
-        display: none;
-    }
-
-    nav .fas {
-        display: block;
-        font-size: 25px;
-    }
-
-    nav ul {
-        background: #262626;
-        position: fixed;
-        top: 0;
-        right: -200px;
-        width: 200px;
-        height: 100vh;
-        padding-top: 50px;
-        z-index: 2;
-        transition: right 0.5s;
-        text-align: center;
-    }
-
-    nav ul li {
-        display: block;
-        margin: 25px;
-    }
-
-    nav ul .fas {
-        position: absolute;
-        top: 25px;
-        left: 25px;
-        cursor: pointer;
-    }
-
-    /* Additional centering styles */
-    .row,
-    .header-text,
-    #sidemenu,
-    .btn {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    #sidemenu {
-        position: fixed;
-        top: 0;
-        right: -200px;
-        width: 200px;
-        height: 100%;
-        transition: right 0.5s;
-    }
-
-    
-    .fas.fa-bars {
-        display: block;
-        cursor: pointer;
-        font-size: 25px;
-        justify-content: right;
-    }
-
-    #board {
-        margin-left: 0%;
-    }
-
-    /* Show the sidemenu when the menu icon is clicked */
-    .menu-open #sidemenu {
-        display: flex;
-        /* Re-display the sidemenu */
-    }
-
-    /* Adjust sidemenu items */
-    #sidemenu li a {
-        font-size: large;
-        /* Adjust font size */
-        padding: 10px;
-        /* Add padding */
-        display: block;
-        /* Display as block to fill the width of the menu */
-    }
-}
-
-@media only screen and (max-width: 520px) {
-    #keyboard {
-        display: none;
-    }
-
-    #board {
-        margin-right: 0%;
-    }
-}
-
-@media only screen and (max-width: 510px) {
-    #keyboard {
-        display: none;
-    }
-
-    #board {
-        margin-left: 0%;
-    }
+#content {
+    display: flex;
+    flex: 1;
 }

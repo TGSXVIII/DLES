@@ -1,0 +1,139 @@
+#game-container-BG3 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(65, 164, 194);
+}
+
+#game-container-Body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(65, 164, 194);
+}
+
+#game-container-DBD {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(65, 164, 194);
+}
+
+#game-container-Gamedle-Splash {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(65, 164, 194);
+}
+
+#game-container-Gamedle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(65, 164, 194);
+}
+
+#game-container-Hades {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(65, 164, 194);
+}
+
+#game-container-Halo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(65, 164, 194);
+}
+
+#game-container-HellDivers {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(65, 164, 194);
+}
+
+#game-container-LoL {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(65, 164, 194);
+}
+
+#game-container-R6 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(65, 164, 194);
+}
+
+#game-container-Wordle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(65, 164, 194);
+}
+
+#container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: rgb(65, 164, 194);
+}
+
+.game-Btn {
+    width: 100px;
+    height: 50px;
+    margin-right: 20%;
+    font-weight: bolder;
+    border: 2px solid #ccc;
+    background-color: white;
+}
+
+.game-Btn:hover {
+    background-color: black;
+    color: white;
+}
+
+#language-buttons {
+    width: 70%;
+    margin-bottom: 40%;
+    margin-left: 20%;
+}

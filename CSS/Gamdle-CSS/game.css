@@ -1,0 +1,71 @@
+.game-container {
+    margin-bottom: 60%;
+    height: auto;
+    width: auto;
+}
+
+.cover-container {
+    width: 400px; /* Width of the placeholder */
+    height: 500px; /* Height of the placeholder */
+    overflow: hidden;
+    margin-top: 5%;
+}
+
+.placeholder-cover {
+    width: 100%;
+    height: 100%;
+    background-color: #ccc; /* Placeholder color or background image */
+    border: 1px solid #999; /* Optional: border styling */
+    box-sizing: border-box;
+}
+
+#guess-input {
+    margin-top: 5%;
+    margin-left: 27%;
+    height: 5%;
+    text-align: center;
+}
+
+#guess-button {
+    height: 5%;
+    width: 15%;
+}
+
+/* Assuming a wrapper for the containers */
+.container-wrapper {
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribute items evenly with space between */
+    height: 50%;
+    width: 50%;
+}
+
+.container-normal,
+.container-endless {
+    background-color: #20839c;
+    padding: 2%;
+    width: 50%; /* Adjust width as needed, leaving space for margins */
+    box-sizing: border-box; /* Ensure padding is included in width calculation */
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.buttons-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center buttons horizontally */
+    margin-top: 10px; /* Adjust spacing between containers and buttons */
+}
+
+#guess-button {
+    height: 5%;
+    width: 15%;
+    margin-top: 5px; /* Adjust vertical spacing between buttons */
+}
+
+h1 {
+    margin-left: 38%;
+}
+
+p {
+    margin-top: 2%;
+}

@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     
-    <title>DLES</title>
+    <title>Gamedle</title>
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="/CSS/nav.css">
@@ -32,8 +32,6 @@
     <script src="/JavaScript/DataBase/Server.js"></script>
     <script src="/JavaScript/DataBase/Frontend.js"></script>
     <script src="/JavaScript/DataBase/DBConnection.js"></script>
-
-
 </head>
 
 <body>
@@ -41,26 +39,25 @@
         <div class="container">
             <nav>
                 <ul id="topmenu">
-                    <button onclick="location.href='../index.html'"class="nav-button2" style="color: rgb(65, 164, 194);"> Home </button>
+                   <button onclick="location.href='../index.html'" class="nav-button2"> Home </button>
                     <button onclick="location.href='/HTML/BG3dle.html'" class="nav-button2"> BG3dle </button>
                     <button onclick="location.href='/HTML/Bodydle.html'" class="nav-button2"> Bodydle </button>
                     <button onclick="location.href='/HTML/DBDdle.html'" class="nav-button2"> DBDdle </button>
-                    <button onclick="location.href='/HTML/Gamedle.html'" class="nav-button2"> Gamedle </button>
+                    <button onclick="location.href='/HTML/Gamedle.html'" class="nav-button2" style="color: rgb(65, 164, 194);"> Gamedle </button>
                     <button onclick="location.href='/HTML/Hadesdle.html'" class="nav-button2"> Hadesdle </button>
                     <button onclick="location.href='/HTML/Halodle.html'" class="nav-button2"> Halodle </button>
                     <button onclick="location.href='/HTML/HellDiversdle.html'" class="nav-button2"> Hell Diversdle </button>
                     <button onclick="location.href='/HTML/LoLdle.html'" class="nav-button2"> LoLdle </button>
                     <button onclick="location.href='/HTML/R6.html'" class="nav-button2"> R6dle </button>
-                    <button onclick="location.href='/HTML/Wordle.html'" class="nav-button2" class="nav-button2"> Wordle </button>
-
+                    <button onclick="location.href='/HTML/Wordle.html'" class="nav-button2"> Wordle </button>
                     
                     <i id="topMenuClose" class="fas fa-times" onclick="alternativeTopMenu()"></i>
                 </ul>
 
                 <!-- Icon for opening the side menu -->
                 <i id="topMenuOpen" class="fas fa-bars" onclick="alternativeTopMenu()"></i>
-                
-                <h1>DLES</h1>
+
+                <h1>Gamedle</h1>
 
                 <ul id="sidemenu">
                     <div class="nav-buttons">
@@ -131,26 +128,39 @@
                         </div>
                     </div>
                 </ul>
-                
+
             </nav>
         </div>
     </div>
 
     <div id="content">
         <aside id="left-sidebar"><p></p></aside>
-    
-        <main id="container">
-            
-            <div id="">
-                <div id=""></div>
-                <div id=""></div>
-            </div>
+        
+        <main id="game-container-Gamedle">
+            <div class="game-container">
+                
+                <h1>Guess the Game</h1>
+                
+                <div class="cover-container">
+                    <div class="placeholder-cover"></div> <!-- Placeholder box -->
+                    <img id="game-cover" src="" alt="Game Cover">
+                </div>
 
+                
+                <input type="text" id="guess-input" placeholder="Enter game name">
+                
+                <button id="guess-button">Guess</button>
+                
+                <div id="suggestions-container"></div>
+                
+                <div id="feedback"></div>
+
+            </div>
         </main>
-    
+
         <aside id="right-sidebar"><p></p></aside>
     </div>
 
-    <footer><p>&copy; 2024 Wordle Game</p></footer>
+    <footer><p>&copy; 2024 Gamedle</p></footer>
 </body>
 </html>
